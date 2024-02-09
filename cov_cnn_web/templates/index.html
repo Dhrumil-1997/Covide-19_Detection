@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <title>CNN Based COVID-19 predictor</title>
+  <head>
+  {% load static %}
+    <link rel="icon" href="../static/header.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+  </head>
+  <body style="background-image: url("paper.gif");">
+    <h1 style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 50px; padding-top: 10px; color:blue ">COVID-19 Prediction</h1>
+    <p style="font-family: 'Gill   Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 20px; word-spacing: 4px; letter-spacing:0.5em; color:blue">CNN Based Detection of COVID-19 from Chest X-Ray images</p>
+    <div class="row py-4">
+      <div class="col-lg-6 mx-auto">
+          <form method="post" id="imageForm" enctype="multipart/form-data" style="width:50%; margin:25px auto;">
+            {% csrf_token %}
+            <label for="ImgFile" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 20px; color:blue">Upload X-Ray</label>
+              <input type="file" name="ImgFile" class="form-control" style="background:transparent; height:50px;" />
+              <input type="submit" id="submitButton" class="btn btn-primary btn-center mt-3" name="submit" value="Solve" style="width: 120px; text-align:center" />
+          </form>
+      </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <img src="{{Image}}">
+      </div>
+      <div class="col-md-8">
+        <table class="{{table}}">
+          <thead>
+            <tr>
+              <th scope="col">{{Col0}}</th>
+              <th scope="col">{{Col1}}</th>
+              <th scope="col">{{Col2}}</th>
+              <th scope="col">{{Col3}}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">{{Row1}}</th>
+              <td>{{V_Pred}}</td>
+              <td>{{R_Pred}}</td>
+              <td>{{X_Pred}}</td>
+            </tr>
+            <tr>
+              <th scope="row">{{Row2}}</th>
+              <td>{{V_Cf}}</td>
+              <td>{{R_Cf}}</td>
+              <td>{{X_Cf}}</td>
+            </tr>
+            <tr>
+              <th scope="row">{{Row3}}</th>
+              <td>{{V_time}}</td>
+              <td>{{R_time}}</td>
+              <td>{{X_time}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  </body>
+</html>
